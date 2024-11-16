@@ -1,0 +1,180 @@
+/* chatbot.css */
+
+/* Styling for the body */
+body {
+    background: transparent;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    color: #333;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+/* Chat container styles */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 800px;
+    background-color: #e0dede;
+    height: 80vh;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Chat header styles */
+.chat-header {
+    background-color: #cdcccc;
+    padding: 5px 0px 5px 20px;
+    text-align: left;
+    font-family: Bungee, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #949393; /* Warna teks */
+    border-bottom: 1px solid #a9a9a9;
+}
+
+/* Chat box styles */
+.chat-box {
+    flex-grow: 1;
+    padding: 10px 20px; 
+    overflow-y: auto;
+    font-size: 14px;
+    color: #333;
+}
+
+.chat-box p {
+    background-color: #d4d3d3;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 5px 0;
+}
+
+/* Chat input container styles */
+.chat-input-container {
+    display: flex;
+    position: relative; 
+    padding: 15px 20px; 
+}
+
+/* Input field styling */
+.chat-input-container input {
+    flex-grow: 1;
+    padding: 5px 50px 5px 20px; 
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    font-size: 16px; 
+    outline: none;
+    height: 50px; 
+}
+
+/* Send button styling */
+.chat-input-container .send-button {
+    position: absolute;
+    right: 30px; 
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #b4b3b3;
+    padding: 10px; 
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    width: 40px; /* Sesuaikan ukuran tombol */
+    height: 40px;
+}
+
+.chat-input-container .send-button:hover {
+    background-color: #cecece;
+}
+
+.send-icon {
+    width: 20px; /* Sesuaikan ukuran ikon agar lebih besar */
+    height: 20px;
+}
+
+/* Styling for user and AI messages */
+.user-message {
+    text-align: right; /* Align user messages to the right */
+    margin: 10px 0;
+}
+
+.ai-message {
+    text-align: left; /* Align AI messages to the left */
+    margin: 10px 0;
+}
+
+/* Styling for chat message text */
+.message {
+    display: inline-block;
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 15px;
+    background-color: #b2ebf2;
+    margin: 5px;
+}
+
+/* Adjust message background color for user messages */
+.user-message .message {
+    background-color: #d1c4e9;
+}
+
+.ai-message .message {
+    background-color: #80deea;
+}
+
+/* Animasi loading dots */
+.loading-dots {
+    display: inline-flex;
+    align-items: center;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+    background-color: #333;
+    border-radius: 50%;
+    display: inline-block;
+    animation: loading-animation 1s infinite alternate;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes loading-animation {
+    0% {
+        opacity: 0.2;
+        transform: translateY(0);
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-5px);
+    }
+    100% {
+        opacity: 0.2;
+        transform: translateY(0);
+    }
+}

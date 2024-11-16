@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="profile-container">
+        <h1>User Profile</h1>
+        <p><strong>Name:</strong> {{ username }}</p>
+        <p><strong>Email:</strong> {{ email }}</p>
+        <form method="POST" action="/logout">
+            <button type="submit" class="logout-button">Logout</button>
+        </form>
+    </div>
+</body>
+</html>

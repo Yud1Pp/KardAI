@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Syne:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/tes.css"> <!-- Tautkan ke file CSS eksternal -->
+</head>
+<body>
+    <div class="chat-container" id="chat-container">
+        <header class="chat-header">
+            <h1>KARD AI</h1>
+            <button class="close-button" onclick="closeChat()">×</button> <!-- Tombol tutup -->
+        </header>
+
+        <div id="response" class="chat-box">
+            <p><strong>Hello!</strong> I'm an AI assistant. Ask me anything.</p>
+        </div>
+        
+        <div class="chat-input-container">
+            <input type="text" id="user-input" placeholder="Type your question here">
+            <button onclick="sendMessage()" class="send-button">
+                <img src="/static/direct.png" alt="Send" class="send-icon">
+            </button>    
+        </div>
+    </div>
+
+    <script>
+        async function sendMessage() {
+            const inputElement = document.getElementById("user-input");
+            const userMessage = inputElement.value.trim(); // Ambil input pengguna dan hapus spasi
+            const responseDiv = document.getElementById("response");
+
+            if (userMessage) {
+                // Tampilkan pesan pengguna di chat box
+                responseDiv.innerHTML += `<div class="user-message"><p class="message"><strong>User:</strong> ${userMessage}</p></div>`;
+                inputElement.value = ""; // Hapus input setelah dikirim
+
+                // Tampilkan animasi loading dari KARD AI
+                const loadingMessage = document.createElement('div');
+                loadingMessage.classList.add('ai-message');
+                loadingMessage.innerHTML = `
+                    <p class="message">
+                        <strong>KARD AI:</strong> 
+                        <span class="loading-dots">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </span>
+                    </p>`;
+                responseDiv.appendChild(loadingMessage);
+                responseDiv.scrollTop = responseDiv.scrollHeight; // Gulir ke bawah untuk menampilkan pesan terbaru
+
+                try {
+                    // Kirim pesan ke API chatbot
+                    const response = await fetch("/chatbot", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ input: userMessage })
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        // Hapus pesan loading dan tampilkan respons dari chatbot
+                        responseDiv.removeChild(loadingMessage);
+                        responseDiv.innerHTML += `<div class="ai-message"><p class="message"><strong>KARD AI:</strong> ${data.response}</p></div>`;
+                    } else {
+                        // Hapus pesan loading dan tampilkan error
+                        responseDiv.removeChild(loadingMessage);
+                        responseDiv.innerHTML += `<p style="color: red;"><strong>Error:</strong> Failed to fetch response.</p>`;
+                    }
+                } catch (error) {
+                    // Hapus pesan loading dan tampilkan error
+                    responseDiv.removeChild(loadingMessage);
+                    responseDiv.innerHTML += `<p style="color: red;"><strong>Error:</strong> ${error.message}</p>`;
+                }
+
+                // Gulir ke bawah untuk menampilkan pesan terbaru
+                responseDiv.scrollTop = responseDiv.scrollHeight;
+            }
+        }
+
+        // Fungsi untuk menutup chat
+        function closeChat() {
+            window.parent.closeModal(); // Notifikasi untuk menutup modal di jendela induk
+        }
+
+        // Event listener untuk menangani penekanan tombol Enter
+        document.getElementById("user-input").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Mencegah form submit (jika ada)
+                sendMessage(); // Kirim pesan saat tombol Enter ditekan
+            }
+        });
+    </script>    
+</body>
+</html>

@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/form.css" />
+    <title>Form</title>
+  </head>
+  <body>
+    <div class="main">
+      <h2 class="text">
+        Cardiovascular Risk Detection Using Machine Learning
+      </h2>
+      <div class="form">
+        <div class="age">
+          <label class="input-label">
+            <p class="label-text">What is your age?</p>
+            <select class="form-input" id="age" name="age">
+              <option value="">Select one</option>
+              <option value="18-24">18-24</option>
+              <option value="25-29">25-29</option>
+              <option value="30-34">30-34</option>
+              <option value="35-39">35-39</option>
+              <option value="40-44">40-44</option>
+              <option value="45-49">45-49</option>
+              <option value="50-54">50-54</option>
+              <option value="55-59">55-59</option>
+              <option value="60-64">60-64</option>
+              <option value="65-69">65-69</option>
+              <option value="70-74">70-74</option>
+              <option value="75-79">75-79</option>
+              <option value="80+">80+</option>
+            </select>
+          </label>
+        </div>
+        <div class="gender">
+          <label class="input-label">
+            <p class="label-text">Gender</p>
+            <select class="form-input" id="gender" name="gender">
+              <option value="">Select one</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </label>
+        </div>
+        <div class="tall">
+          <label class="input-label">
+            <p class="label-text">Height (cm)</p>
+            <input
+              type="text"
+              id="height"
+              name="height"
+              placeholder="Enter your height"
+            />
+          </label>
+        </div>
+        <div class="weight">
+          <label class="input-label">
+            <p class="label-text">Weight (kg))</p>
+            <input
+              type="text"
+              id="weight"
+              name="weight"
+              placeholder="Enter your weight"
+            />
+          </label>
+        </div>
+        <div class="smoking">
+          <p class="title">Do you smoke?</p>
+          <label class="radio-label">
+            <span>Yes</span>
+            <input type="radio" name="smoking" value="Yes" />
+          </label>
+          <label class="radio-label">
+            <span>No</span>
+            <input type="radio" name="smoking" value="No" />
+          </label>
+        </div>
+        <div class="health">
+          <label class="input-label">
+            <p class="label-text">
+              How would you describe your health status?
+            </p>
+            <select class="form-input" id="health" name="health">
+              <option value="">Select one</option>
+              <option value="Poor">poor</option>
+              <option value="Fair">Fair</option>
+              <option value="Good">Good</option>
+              <option value="Very Good">Very Good</option>
+              <option value="Excellent">Excellent</option>
+            </select>
+          </label>
+        </div>
+        <div class="exercise">
+          <p class="title">Do you exercise regularly?</p>
+          <label class="radio-label">
+            <span>Yes</span>
+            <input type="radio" name="exercise" value="Yes" />
+          </label>
+          <label class="radio-label">
+            <span>No</span>
+            <input type="radio" name="exercise" value="No" />
+          </label>
+        </div>
+        <div class="slider">
+          <label for="slider" class="slider-label">
+            During the past 30 days, how many days did you have at least one drink of any alcoholic beverage such as beer, wine, a malt beverage or liquor?
+          </label>
+          <input
+            type="range"
+            id="slider"
+            name="alcohol"
+            min="0"
+            max="30"
+            value="0"
+          />
+          <span id="sliderValue">0 days/month</span>
+        </div>
+        <div class="fruit">
+          <label class="input-label">
+            <p class="label-text">Do you eat fruits regularly?</p>
+            <select
+              class="form-input"
+              id="fruit"
+              name="fruit"
+              onchange="toggleFruitQuantity()"
+            >
+              <option value="">Select one</option>
+              <option value="day">Per Day</option>
+              <option value="week">Per Week</option>
+              <option value="month">Per Month</option>
+            </select>
+          </label>
+        </div>
+        <div class="fruit-quantity" id="fruitQuantity" style="display: none">
+          <label class="input-label">
+            <p class="label-text">How many servings?</p>
+            <select class="form-input" id="fruitAmount" name="fruit_quantity">
+              <option value="">Select one</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </label>
+        </div>
+        <div class="vegetables">
+          <label class="input-label">
+            <p class="label-text">Do you eat vegetables regularly?</p>
+            <select
+              class="form-input"
+              id="vegetables"
+              name="vegetables"
+              onchange="toggleVegetablesQuantity()"
+            >
+              <option value="">Select one</option>
+              <option value="day">Per Day</option>
+              <option value="week">Per Week</option>
+              <option value="month">Per Month</option>
+            </select>
+          </label>
+        </div>
+        <div
+          class="vegetables-quantity"
+          id="vegetablesQuantity"
+          style="display: none"
+        >
+          <label class="input-label">
+            <p class="label-text">How many servings?</p>
+            <select
+              class="form-input"
+              id="vegetablesAmount"
+              name="vegetables_quantity"
+            >
+              <option value="">Select one</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </label>
+        </div>
+        <div class="fried">
+          <label class="input-label">
+            <p class="label-text">Do you like to eat french fries?</p>
+            <select
+              class="form-input"
+              id="fried"
+              name="fried"
+              onchange="toggleFriedQuantity()"
+            >
+              <option value="">Select one</option>
+              <option value="day">Per Day</option>
+              <option value="week">Per Week</option>
+              <option value="month">Per Month</option>
+            </select>
+          </label>
+        </div>
+        <div class="fried-quantity" id="friedQuantity">
+          <label class="input-label">
+            <p class="label-text">How many servings?</p>
+            <select class="form-input" name="fried_quantity" , id="friedAmount">
+              <option value="">Select one</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </label>
+        </div>
+        <button class="button">submit</button>
+        <div id="resultModal" class="modal">
+          <div id="loading" class="loading-overlay" style="display: none;">
+            <div class="spinner"></div>
+            <p>Loading...</p>
+          </div>
+          <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Result</h3>
+            <p id="resultText">Your result will appear here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const slider = document.getElementById("slider");
+      const sliderValue = document.getElementById("sliderValue");
+
+      slider.addEventListener("input", function () {
+        sliderValue.textContent = `${slider.value} hari/bulan`;
+      });
+
+      function toggleFruitQuantity() {
+        const fruitDropdown = document.getElementById("fruit");
+        const fruitQuantity = document.getElementById("fruitQuantity");
+
+        fruitQuantity.style.display = fruitDropdown.value ? "block" : "none";
+      }
+
+      function toggleVegetablesQuantity() {
+        const vegetablesDropdown = document.getElementById("vegetables");
+        const vegetablesQuantity =
+          document.getElementById("vegetablesQuantity");
+
+        vegetablesQuantity.style.display = vegetablesDropdown.value
+          ? "block"
+          : "none";
+      }
+
+      function toggleFriedQuantity() {
+        const friedDropdown = document.getElementById("fried");
+        const friedQuantity = document.getElementById("friedQuantity");
+
+        friedQuantity.style.display = friedDropdown.value ? "block" : "none";
+      }
+
+      document
+      document.querySelector(".button").addEventListener("click", function (event) {
+        document.getElementById("loading").style.display = "block";
+
+          // Get values from form inputs
+          const age = document.getElementById("age").value;
+          const gender = document.getElementById("gender").value;
+          const height = document.getElementById("height").value;
+          const weight = document.getElementById("weight").value;
+          const smoking =
+            document.querySelector('input[name="smoking"]:checked')?.value ||
+            "Not specified";
+          const exercise =
+            document.querySelector('input[name="exercise"]:checked')?.value ||
+            "Not specified";
+          const alcohol = slider.value;
+          const health = document.getElementById("health").value;
+          const fruit = document.getElementById("fruit").value;
+          let fruitAmount =
+            parseInt(document.getElementById("fruitAmount").value) ||
+            "Not selected";
+          const vegetables = document.getElementById("vegetables").value;
+          let vegetablesAmount =
+            parseInt(document.getElementById("vegetablesAmount").value) ||
+            "Not selected";
+          const fried = document.getElementById("fried").value;
+          let friedAmount =
+            parseInt(document.getElementById("friedAmount").value) ||
+            "Not selected";
+
+          if (fruit === "day" && !isNaN(fruitAmount)) {
+            fruitAmount = fruitAmount * 30;
+          } else if (fruit === "week" && !isNaN(fruitAmount)) {
+            fruitAmount = fruitAmount * 4;
+          }
+
+          if (vegetables === "day" && !isNaN(vegetablesAmount)) {
+            vegetablesAmount = vegetablesAmount * 30;
+          } else if (vegetables === "week" && !isNaN(vegetablesAmount)) {
+            vegetablesAmount = vegetablesAmount * 4;
+          }
+
+          if (fried === "day" && !isNaN(friedAmount)) {
+            friedAmount = friedAmount * 30;
+          } else if (fried === "week" && !isNaN(friedAmount)) {
+            friedAmount = friedAmount * 4;
+          }
+
+          const inputData = {
+            Age_Category: age || "80+",
+            Sex: gender || "Male",
+            "Height_(cm)": Number(height) || 170,
+            "Weight_(kg)": Number(weight) || 100,
+            General_Health: health || "Poor",
+            Exercise: exercise || "No",
+            Smoking_History: smoking || "Yes",
+            Alcohol_Consumption: Number(alcohol) || 30,
+            Fruit_Consumption: Number(fruitAmount) || 0,
+            Green_Vegetables_Consumption: Number(vegetablesAmount) || 0,
+            FriedPotato_Consumption: Number(friedAmount) || 10,
+          };
+
+          // Display result in modal
+          // document.getElementById("resultText").innerHTML = JSON.stringify(inputData, null, 2);
+          // document.getElementById("resultModal").style.display = "block";
+
+          fetch("/predict-risk", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(inputData),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              document.getElementById("loading").style.display = "none"; // Sembunyikan indikator loading
+              if (data.error) {
+                document.getElementById(
+                  "resultText"
+                ).textContent = `Error: ${data.error}`;
+              } else {
+                document.getElementById("resultText").innerHTML = `
+                    Prediction: ${data.prediction}<br>
+                    Probability: ${data.probability}
+                `;
+              }
+              document.getElementById("resultModal").style.display = "block";
+            })
+            .catch((error) => {
+              document.getElementById("loading").style.display = "none"; // Sembunyikan indikator loading
+              document.getElementById(
+                "resultText"
+              ).textContent = `Error: ${error.message}`;
+              document.getElementById("resultModal").style.display = "block";
+            });
+        });
+
+      // Close modal when the close button is clicked
+      document
+        .querySelector(".close-btn")
+        .addEventListener("click", function () {
+          document.getElementById("resultModal").style.display = "none";
+        });
+
+      // Close modal when clicking outside of the modal content
+      window.addEventListener("click", function (event) {
+        const modal = document.getElementById("resultModal");
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>

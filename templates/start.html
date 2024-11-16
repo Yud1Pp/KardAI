@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kardiovaskular Diagnosis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=account_circle" />
+    <link rel="stylesheet" href="/static/start.css">
+    <style>
+        /* Overlay Styling */
+        #overlay {
+            display: none; /* Hidden by default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Dark background */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Modal Content Styling */
+        #modal-content {
+            width: 70%;
+            height: 70%;
+            background: none;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Chatbot Button Styling */
+        .chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #3c6a50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .chatbot-button:hover {
+            background-color: #4d9a63;
+        }
+    </style>
+</head>
+<body>
+    <!-- ChatBot Button -->
+    <div id="chatbot">
+        <button class="chatbot-button" onclick="openModal()">Ask Kard AI</button>
+    </div>
+    <!-- Header Section -->
+    <div id="header">
+        <div class="container">
+            <nav>
+                <p> Kard<span>AI</span>. </p>
+                <ul>
+                    <li><a href="#header">Checking</a></li>
+                <li><a href="#kardio-info">Defintion</a></li>
+                    <li><a href="#jenis-kardio">Disease</a></li>
+                    {% if logged_in %}
+                        <li>
+                            <a href="javascript:void(0)" onclick="openProfileModal()">
+                                <span class="material-symbols-outlined">account_circle</span>
+                            </a>
+                        </li>
+                    {% else %}
+                        <li><a href="/signup">Sign Up</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <div class="header-text">
+                <h1>Cardio<span>vascular</span> <br>Diagnosis</h1>
+                <p>This is a website to detect the risk of cardiovascular disease.</p>
+                <button onclick="location.href='/form'" class="btn">Check the Risk</button>
+            </div>            
+        </div>    
+    </div>
+    <!-- ----------------Pengertian------------------ -->   
+    <div id="kardio-info">
+        <div class="container">
+            <h2>what is <span>Cardiovascular</span>?</h2>
+            <div class="row">
+                <div class="kardio-img">
+                    <img src="{{ url_for('static', filename='kardiovaskular.jpg') }}" alt="Gambar Kardiovaskular">
+                </div>
+                <div class="kardio-text">
+                    <p>Cardiovascular diseases are a group of disorders of the heart and blood vessels that include coronary heart disease, peripheral artery disease, and other related conditions. These diseases can lead to serious complications such as heart attack and stroke. It is important to maintain a healthy heart through a healthy diet, exercise, and regular check-ups.</p>
+                </div>    
+            </div>
+        </div>
+    </div>
+    <!-- -----------------Jenis-jenis------------------- -->           
+    <div id="jenis-kardio">
+        <div class="container">
+            <h2>Types of <span>Cardivascular Disease</span></h2>
+            <div class="card-container">
+                <div class="card">
+                    <img src="{{ url_for('static', filename='aritmia.jpg') }}" alt="Aritmia">
+                    <div class="card-content">
+                      <h2>Arrhythmia</h2>
+                      <p>Arrhythmia is a heart rhythm disorder that occurs when the electrical signals in the heart do not function properly, causing the heart to beat too fast, slow, or irregularly.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="{{ url_for('static', filename='gagaljantung.jpg') }}" alt="Gagal Jantung">
+                    <div class="card-content">
+                      <h2>Heart Failure</h2>
+                      <p>Heart failure is a condition where the heart cannot pump blood effectively enough to meet the body's needs, which can be caused by various factors such as coronary heart disease or hypertension.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="{{ url_for('static', filename='jantungkoroner.jpg') }}" alt="Jantung Koroner">
+                    <div class="card-content">
+                      <h2>Coronary Heart</h2>
+                      <p>Coronary heart disease occurs when the blood vessels that supply blood to the heart (coronary arteries) become blocked or narrowed due to fatty plaque buildup, increasing the risk of a heart attack. </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="{{ url_for('static', filename='jantungbawaan.png') }}" alt="Jantung Bawaan">
+                    <div class="card-content">
+                      <h2>Congenital Heart</h2>
+                      <p>Congenital heart defects refer to heart defects present from birth, involving disturbances in the structure or function of the heart that can affect blood flow.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="{{ url_for('static', filename='katup.jpg') }}" alt="Katup Jantung">
+                    <div class="card-content">
+                      <h2>Valve Disease</h2>
+                      <p>Heart valve disease involves abnormalities in the heart valves, which can cause the valves to not close properly or not open fully, affecting blood flow in the heart.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="{{ url_for('static', filename='pem.jpg') }}" alt="Pembuluh darah">
+                    <div class="card-content">
+                      <h2>Blood<br> Vessel Blockage</br></h2>
+                      <p>Blood vessel blockage occurs when a blood vessel, either an artery or a vein, is blocked by plaque or a blood clot, which obstructs normal blood flow and could risk causing a stroke or heart attack.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Overlay and Modal for tes.html -->
+    <div id="overlay">
+        <div id="modal-content">
+            <span class="close-button" onclick="closeModal()">&times;</span>
+            <iframe id="modal-iframe" src="" frameborder="0" width="100%" height="100%"></iframe>
+        </div>
+    </div>
+    <!-- -----------------Info User------------------- -->
+    <div id="profile-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeProfileModal()">&times;</span>
+            <h2>User Profile</h2>
+            <p><strong>Name:</strong> {{ username }}</p>
+            <p><strong>Email:</strong> {{ username }}@example.com</p>  <!-- Anda bisa mengganti sesuai data -->
+            <form method="POST" action="/logout">
+                <button type="submit" class="logout-button">Logout</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            const overlay = document.getElementById('overlay');
+            const modalIframe = document.getElementById('modal-iframe');
+    
+            // Set iframe source to load tes.html
+            modalIframe.src = '/tes'; // Flask serves tes.html at this endpoint
+            overlay.style.display = 'flex'; // Show overlay
+        }
+    
+        function closeModal() {
+            const overlay = document.getElementById('overlay');
+            const modalIframe = document.getElementById('modal-iframe');
+    
+            overlay.style.display = 'none'; // Hide overlay
+            modalIframe.src = ''; // Clear iframe source to stop loading
+        }
+    </script>
+    <script>
+        function openProfileModal() {
+            document.getElementById('profile-modal').style.display = 'flex';
+        }
+
+        function closeProfileModal() {
+            document.getElementById('profile-modal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

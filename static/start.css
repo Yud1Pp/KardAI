@@ -1,0 +1,372 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #1a1a1a;
+  font-family: "Inter", sans-serif;
+}
+
+#chatbot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.chatbot-button {
+  position: fixed; /* Posisikan tombol tetap */
+  bottom: 65px !important; /* Jarak dari bawah layar */
+  right: 100px !important; /* Jarak dari kanan layar */
+  background-color: #3c6a50; /* Warna hijau terang */
+  color: #1a1a1a; /* Warna teks hitam */
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Inter", sans-serif;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px; /* Membuat tombol berbentuk oval */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Jarak antara teks dan logo */
+  box-shadow: 3px 7px 10px rgba(132, 132, 132, 0.2); /* Memberikan bayangan */
+  transition: background-color 0.3s ease,box-shadow 0.5s ease-in-out, transform 0.3s ease;;;
+  z-index: 1000; /* Pastikan berada di atas elemen lain */
+}
+
+.chatbot-button:hover {
+  background-color: #4d9a63;
+  color: #efefef;
+  box-shadow: 0 0 15px 5px rgba(249, 249, 249, 0.5);
+  transform: scale(1.05);
+}
+
+/* ----------------Header ---------------- */
+
+#header {
+  width: 100%;
+  height: 100vh;
+}
+
+.container {
+  padding: 10px 10%;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+nav p {
+  color: #d4ddec;
+  font-family: "Syne", sans-serif;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+nav p span {
+  color: #477a60;
+}
+
+nav ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 10px 20px;
+}
+
+nav ul li a {
+  color: #d4ddec;
+  text-decoration: none;
+  font-size: 18px;
+  position: relative;
+}
+
+nav ul li a:after {
+  content: "";
+  width: 0;
+  height: 3px;
+  background-color: #477a60;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  transition: 0.5s;
+}
+
+nav ul li a:hover:after {
+  width: 100%;
+}
+
+/* Styling for the Sign Up button in the navbar */
+.signup-button {
+  display: inline-block;
+  padding: 10px 20px;
+  color: d4ddec;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease,box-shadow 0.5s ease-in-out;
+}
+
+.signup-button:hover {
+  color: #f4f4f4;
+  background-color: #4d9a63;
+  box-shadow: 0 0 15px 5px rgba(249, 249, 249, 0.5);
+  transform: scale(1.05);
+}
+
+
+.header-text {
+  margin-top: 9%;
+  font-size: 30px;
+}
+
+.header-text h1 {
+  font-size: 100px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #d4ddec;
+  font-family: "Syne", sans-serif;
+}
+
+.header-text h1 span {
+  color: #477a60;
+}
+
+.header-text p {
+  color: #9ba3a9;
+  font-size: 24px;
+  margin-bottom: 50px;
+  line-height: 1.8;
+}
+
+.header-text button {
+  background-color: #3c6a50;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease,box-shadow 0.5s ease-in-out, transform 0.3s ease;
+}
+
+.header-text button:hover {
+  background-color: #4d9a63;
+  color: #efefef;
+  box-shadow: 0 0 15px 5px rgba(249, 249, 249, 0.5);
+  transform: scale(1.05);
+}
+
+/* -------------Pengertian-----------------*/
+
+#kardio-info {
+  padding: 40px 0;
+  color: #d4ddec;
+}
+
+#kardio-info h2 {
+  font-size: 40px;
+  margin-bottom: 60px;
+}
+
+#kardio-info h2 span {
+  color: #477a60;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.kardio-img {
+  flex-basis: 35%;
+}
+
+.kardio-img img {
+  width: 350px;
+  height: auto;
+  border-radius: 15px;
+}
+
+.kardio-text {
+  flex-basis: 65%;
+}
+
+.kardio-text p {
+  font-size: 20px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+/* -------------Jenis-jenis-----------------*/
+
+#jenis-kardio {
+  padding: 40px 0;
+  margin-top: 10%;
+  color: #d4ddec;
+}
+
+#jenis-kardio h2 {
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+#jenis-kardio h2 span {
+  color: #477a60;
+}
+
+/* -- Cards -- */
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Membuat 3 kolom tetap */
+  gap: 20px; /* Jarak antar-card */
+  padding: 20px; /* Jarak dari tepi container ke card */
+  justify-content: space-between; /* Memberikan ruang seragam antar kolom */
+}
+
+.card {
+  width: 100%; /* Mengisi ruang kolom grid */
+  height: auto; /* Tinggi mengikuti isi */
+  max-width: 300px; /* Batas maksimal lebar card */
+  margin: 10px auto; /* Pusatkan card dalam kolom */
+  border-radius: 10px;
+  overflow: hidden;
+  background: #2c2c2c;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Shadow lebih lembut */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  position: relative; /* Memastikan .card-content berada di dalam card */
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+/* Overlay yang akan muncul saat hover */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0); /* Transparan awal */
+  transition: background-color 0.3s ease;
+  z-index: 1;
+}
+
+.card:hover::before {
+  background-color: rgba(0, 0, 0, 0.5); /* Menggelapkan overlay saat hover */
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover img {
+  opacity: 0.9;
+}
+
+/* Teks di atas card */
+.card-content {
+  position: absolute;
+  bottom: 20px; /* Default posisi teks di bawah */
+  left: 10px; /* Jarak dari kiri */
+  color: #f0f0f0;
+  z-index: 2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.card-content h2 {
+  margin: 0;
+  font-size: 18px !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "Inter", sans-serif;
+  text-shadow: -0.5px -0.5px 0 #000000,
+    /* Bayangan ke kiri atas */ 0.5px -0.5px 0 #000000,
+    /* Bayangan ke kanan atas */ -0.5px 0.5px 0 #000000,
+    /* Bayangan ke kiri bawah */ 0.5px 0.5px 0 #000000; /* Bayangan ke kanan bawah */
+  opacity: 1; /* Tetap terlihat sebelum hover */
+  transform: translateY(90px); /* Posisi awal */
+  transition: transform 0.3s ease; /* Efek transisi untuk posisi */
+}
+
+.card-content p {
+  margin-top: 12px;
+  font-size: 10px;
+  line-height: 1.4;
+  opacity: 0; /* Deskripsi hanya muncul saat hover */
+  transition: opacity 0.5s ease;
+}
+
+/* Hover Effect */
+.card:hover .card-content h2 {
+  transform: translateY(-20px); /* Kurangi jarak ke atas */
+}
+
+.card:hover .card-content p {
+  opacity: 1; /* Deskripsi muncul saat hover */
+}
+
+/* Profile */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+  color: #000000;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.logout-button {
+  display: inline-block;
+  padding: 10px 20px;
+  color: d4ddec;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease,box-shadow 0.5s ease-in-out;
+}
+
+.logout-button:hover {
+  color: #f4f4f4;
+  background-color: #4d9a63;
+  box-shadow: 0 0 15px 5px rgba(249, 249, 249, 0.5);
+  transform: scale(1.05);
+}
