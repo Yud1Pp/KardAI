@@ -85,7 +85,7 @@ def create_connection():
         connection = mysql.connector.connect(
             host="dtclq.h.filess.io",
             user="KardAI_droveleast",
-            password="azhadzakyilhamyudi1234",
+            password = os.getenv("DATABASE_PASSWORD"),
             database="KardAI_droveleast",
             port=3307
         )
